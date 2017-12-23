@@ -68,9 +68,23 @@ def print_data_stats(X, Y):
         
     print('Distribution of Classes \r\n')
         
+    x = [i for i in sign_names.keys()]
+    y = [samples_count[sign_names[i]] for i in sign_names.keys()]
+
+    # plot distribution density and sample count histogram
+    fig = plt.figure()
+    
+    plot = fig.add_subplot(1, 2, 1)
+    plot.set_title('Sample Distribution')
     plt.hist(list(samples_count.values()), bins = len(sign_names))
-            
-        
+    
+    plot = fig.add_subplot(1, 2, 2)
+    plot.set_title('Sample Count')
+    plt.bar(x, y)
+       
+    plt.show()
+    
+    
 def show_sample(X, Y, sample_id):
     """
     Show selected sample image from data set
@@ -187,12 +201,13 @@ def get_new_test_images():
     return (images, labels)
     
     
-def show_top_n_predictions(images, labels, top_n_predictions):
+def show_top_n_predictions(images, labels, top_n_predictions, top_n_prob):
     """
     Show top n predictions for images
     : images: image vector to show
     : labels: actual labels of images
     : top_n_predictions: top n predictions by neural network of image vector
+    : top_n_prob: softmax probabilities of each prediction
     """
     count = len(images)
     sign_names = get_sign_names()
@@ -206,8 +221,10 @@ def show_top_n_predictions(images, labels, top_n_predictions):
         plt.show()
         
         predictions = top_n_predictions[i]
+        probabilities = top_n_prob[i]
         
         for j in range(len(predictions)):
-            print("Top-{}: ID: {:2}, Name: {}".format(j+1, predictions[j], sign_names[predictions[j]]))
+            print("Top-{}: Prob: {:.6}, ID: {:2}, Name: {}".format(j+1, probabilities[j],
+                                                                   predictions[j], sign_names[predictions[j]]))
         
         print("IMAGE: ID: {:2}, Name: {} \r\n".format(labels[i], sign_names[labels[i]]))
