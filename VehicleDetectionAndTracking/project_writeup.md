@@ -9,9 +9,9 @@ This projects detects on road vehicles using a trained classifier and video stre
 
 [//]: # (Image References)
 [image1]: ./output_images/1.png
-[image2]: ./output_images/2.jpg
-[image3]: ./output_images/3.jpg
-[image4]: ./output_images/4.jpg
+[image2]: ./output_images/2.png
+[image3]: ./output_images/3.png
+[image4]: ./output_images/4.png
 [image5]: ./output_images/5.png
 [image6]: ./output_images/6.png
 [image7]: ./output_images/7.png
