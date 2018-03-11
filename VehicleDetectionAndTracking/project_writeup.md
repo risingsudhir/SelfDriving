@@ -15,7 +15,7 @@ This projects detects on road vehicles using a trained classifier and video stre
 [image5]: ./output_images/5.png
 [image6]: ./output_images/6.png
 [image7]: ./output_images/7.png
-[image7]: ./output_images/8.png
+[image8]: ./output_images/8.png
 [video1]: ./test_videos_output/project_video.mp4
 
 
