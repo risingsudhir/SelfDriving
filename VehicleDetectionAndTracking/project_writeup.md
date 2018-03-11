@@ -36,9 +36,24 @@ All three feature vectors are combined together. Images below are shown for two 
 
 Feature vector parameters were selected to keep the balance of feature vector and training complexity. RGB color channel has been used for feature extraction.
 
+Following HOG parameters were used based on experimental results and computational efficiency: 
+
+* HOG Orientations = 9
+* Pixels per cell  = 8
+* Cells per block  = 2
+* Color Channels   = (R, G, B)
+
+i.e. each training image is divided into cells of 8x8 pixels, for which a histogram of gradient directions is compiled. Gradients of cells are normalized across blocks which is constructed by 2x2 cells. This normalization across all three channels has provded better invariance to changes in illumination and shadowing. 
+
 To train the classifier, a Support Vector Machine with linear kernal has been used. 'C' value optimization is done using grid search method. SVM with linear kernal and 'C' value of 10 has been selcted as best fit for the image data.
 
 Training and Test set accuracy is 99.97% and 99.03%, respectively.
+
+To ensure classifier does not suffer any bias and generalizes well, following steps have been taken: 
+
+* Training data is randomized and splitted into training and testing set with 80:20 ratio.
+* Training data set is normalized without looking at the test data set. Normalization ensures classifier behaviour is not dominated by just a subset of features. Also, convergance is faster due to data centred around mean.
+* Grid search is used to find the optimal value of the 'C' parameter which itself uses 3-fold cross validation to remove any bias while selecting optimal parameter.
 
 
 ### Vehicle Detection
